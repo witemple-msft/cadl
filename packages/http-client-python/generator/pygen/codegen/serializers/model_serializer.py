@@ -116,7 +116,7 @@ class _ModelSerializer(BaseSerializer, ABC):
     def initialize_properties(self, model: ModelType) -> List[str]: ...
 
     def need_init(self, model: ModelType) -> bool:
-        return (not model.internal) and bool(self.init_line(model) or model.discriminator)
+        return bool(self.init_line(model) or model.discriminator)
 
     def pylint_disable_items(self, model: ModelType) -> List[str]:
         if model.flattened_property or self.initialize_properties(model):
@@ -192,7 +192,8 @@ class MsrestModelSerializer(_ModelSerializer):
             if prop.is_discriminator:
                 init_args.append(self.initialize_discriminator_property(model, prop))
             elif prop.readonly:
-                init_args.append(f"self.{prop.client_name} = None")
+                # we want typing for readonly since typing isn't provided from the command line
+                init_args.append(f"self.{prop.client_name}: {prop.type_annotation()} = None")
             elif not prop.constant:
                 init_args.append(f"self.{prop.client_name} = {prop.client_name}")
         return init_args

@@ -70,7 +70,9 @@ words:
   - espt
   - ESRP
   - etree
+  - fastify
   - fluentui
+  - français
   - genproto
   - getpgid
   - giacamo
@@ -80,8 +82,11 @@ words:
   - Hdvcmxk
   - headasbooleanfalse
   - headasbooleantrue
+  - hscs
+  - HSTS
   - imple
   - Infima
+  - initcs
   - inlines
   - inmemory
   - instanceid
@@ -203,6 +208,7 @@ words:
   - ssvs
   - statment
   - strs
+  - swaggerui
   - syncpack
   - TCGC
   - timegm
@@ -266,6 +272,7 @@ ignorePaths:
   - "**/ThirdPartyNotices.txt"
   - packages/compiler/test/formatter/scenarios/**
   - packages/http-client-java/generator/http-client-generator-test/**
+  - packages/http-client-java/generator/http-client-generator-clientcore-test/**
   - pnpm-lock.yaml
   - "**/*.mp4"
   - .git/**
